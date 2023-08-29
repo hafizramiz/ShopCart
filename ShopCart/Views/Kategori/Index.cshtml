@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Kategori Ekle";
+
+}
+
+
+<div class="span9">
+    <h2>Kategori Ekleme Sayfası</h2>
+
+    <div class="well">
+        <form class="form-horizontal" method="post">
+            <h3>Mevcut Kategoriler</h3>
+
+            <div class="control-group">
+                @foreach (ShopCart.Models.Kategoriler k in Model)
+                {
+                    <div class="navbar-inner">
+                        <ul>
+                            <h4> @k.kategoriAdi</h4>
+                            <a href="#">Guncelle</a>
+                            <a class="ktgSil" data-ktgId="@k.kategoriId">Sil</a>
+                        </ul>
+                    </div>
+                }
+
+                <!--Kategori ekle Bolumu-->
+                <form class="form-horizontal" method="post">
+                    <h3>Yeni Kategori Olusturun</h3>
+
+                    <div class="control-group">
+                        <label class="control-label">Kategori Adi Girin<sup>*</sup></label>
+                        <div class="controls">
+                            <input type="text" name="kategoriAdi">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="submit" name="submitAccount"
+                                   value="Kategori Ekle"
+                                   class="exclusive shopBtn">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </form>
+    </div>
+
+    <!--  Hatayi gosterecek bolum-->
+
+    <div>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+</div>
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(".ktgSil").click(function () {
+            var sonuc = confirm(" Kategoriyi silmek istiyor musun?");
+            if (sonuc) {
+
+                var kId = $(this).attr("data-ktgId");
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Kategori/KategoriSil/" + kId,
+                        success: function () {
+                            alert(" Kayit basariyla silindi");
+                            window.location.replace("/Kategori/Index");
+
+                        },
+
+                        error: function () {
+                            alert("Kayit Silinemedi");
+                        }
+
+                    });
+            }
+            else {
+                alert("Silme islemi iptal edildi");
+            }
+
+        });
+    </script>
+}
+

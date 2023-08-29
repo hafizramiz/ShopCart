@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Kategori Goruntule";
+}
+
+<div id="sidebar" class="span3">
+    <div class="well well-small">
+        <ul class="nav nav-list">
+
+            @foreach (ShopCart.Models.Kategoriler kategori in ViewBag.Kategoriler)
+            {
+                /// Burda kategori isimlerini listeledim.Kategoriye gore farkli urun gostercem
+                <li><a href="/Kategori/KategoriGoruntule/@kategori.kategoriId"><span class="icon-chevron-right"></span>@kategori.kategoriAdi</a></li>
+            }
+
+            @if (User.IsInRole("admin"))
+            {
+                <li> <a class="totalInCart" href="cart.html"><strong>Kategori Ekle</strong></a></li>
+            }
+
+            @if (User.IsInRole("kullanici"))
+            {
+
+                if (ViewBag.MusteriSepeti != null)
+                {
+                    <a href="/Sepet/Index"><span class="icon-shopping-cart"></span> <span class="badge badge-warning"> Sepet Miktari:  @ViewBag.MusteriSepeti.toplamTutar TL</span></a>
+                }
+                else
+                {
+                    <a href="/Sepet/Index"><span class="icon-shopping-cart"></span> <span class="badge badge-warning">0 </span></a>
+                }
+
+
+                <br />
+
+                if (ViewBag.FavoriDetayListesi.Count > 0)
+                {
+
+
+                    <a href="/Favori/Index"><span class="icon-heart"></span> <span class="badge badge-warning">Favori Urunler:@ViewBag.FavoriDetayListesi.Count</span></a>
+
+                }
+                else
+                {
+                    <a href="/Favori/Index"><span class="icon-heart-empty"></span> <span class="badge badge-warning">Favori Urunler:0</span></a>
+
+                }
+
+            }
+        </ul>
+    </div>
+
+
+    <br>
+    <br>
+
+</div>
+
+<div class="span9">
+
+    <!--
+    New Products
+    -->
+    <div class="well well-small">
+        <h3>Satista Olan Urunler</h3>
+        <hr class="soften" />
+        <div class="row-fluid">
+            <ul class="thumbnails">
+                @foreach (ShopCart.Models.Urunler u in Model)
+                {
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <!-- Urun Detay Sayfasina Yonlendir.-->
+                            <a class="zoomTool" href="@Url.Action("Index", "UrunDetay", u)" title="add to cart"> Detay</a>
+
+                            <a href="@Url.Action("Index", "UrunDetay", u)"><img src="~/Contents/assets/img/@u.urunResmi" alt=""></a>
+                            <div class="caption cntr">
+                                <p>@u.urunAdi</p>
+                                <p><strong>Fiyati: @u.urunFiyati TL</strong></p>
+                                <p>saticiId : @u.saticiId</p>
+
+                                @if (User.IsInRole("kullanici"))
+                                {
+                                    <h4><a class="shopBtn" href="@Url.Action("SepeteEkle", "Sepet", u)" title="add to cart"> Sepete Ekle </a></h4>
+                                    <h4><a class="shopBtn" href="@Url.Action("FavoriEkle", "Favori", u)" title="add to favori"> Favori Ekle </a></h4>
+                                }
+
+
+                                <!--  Hatayi gosterecek bolum-->
+
+                                <div>
+                                    @if (ViewBag.Hata != null)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <p>@ViewBag.Hata</p>
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+
+                                <br class="clr">
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+</div>
+

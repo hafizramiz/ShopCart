@@ -1,0 +1,133 @@
+﻿
+
+@{
+    if (ViewBag.UrunEkle == true)
+    {
+        ViewBag.Title = "Urun Ekle";
+
+    }
+    else
+    {
+        ViewBag.Title = "Urun Guncelle";
+
+    }
+
+}
+
+<div class="span9">
+
+    @if (ViewBag.UrunEkle == true)
+    {
+        <h2>Ürün Ekleme Sayfası</h2>
+    }
+    else
+    {
+        <h2>Ürün Guncelleme Sayfası</h2>
+    }
+
+
+    <div class="well">
+        <form class="form-horizontal" method="post">
+            <h3>Urun Bilgilerini Giriniz</h3>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="hidden" name="urunId" value="@Model.urunId">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="hidden" name="saticiId" value="@ViewBag.SaticiId">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">UrunAdi <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" name="urunAdi" value="@Model.urunAdi">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Urun Fiyati <sup>*</sup></label>
+                <div class="controls">
+                    <input type="number" name="urunFiyati" value="@Model.urunFiyati">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Urun Resmi <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" name="urunResmi" value="@Model.urunResmi">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Urun Stok Miktari <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" name="urunStokMiktari" value="@Model.urunStokMiktari">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Kategori Secin <sup>*</sup></label>
+                <div class="controls">
+                    <select class="form-select-list" name="kategoriId">
+                        @foreach (ShopCart.Models.Kategoriler k in ViewBag.Kategoriler)
+                        {
+                            <option value="@k.kategoriId">@k.kategoriAdi</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Marka Secin <sup>*</sup></label>
+                <div class="controls">
+                    <select class="form-select-list" name="markaId" >
+                        @foreach (ShopCart.Models.Markalar m in ViewBag.Markalar)
+                        {
+                            <option  value="@m.markaId">@m.markaAdi</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            @if (ViewBag.UrunEkle == true)
+            {
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" name="submitAccount"
+                               value="UrunEkle"
+                               class="exclusive shopBtn">
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" name="submitAccount"
+                               value="Urun Guncelle"
+                               class="exclusive shopBtn">
+                    </div>
+                </div>
+
+            }
+        </form>
+    </div>
+
+    <!--  Hatayi gosterecek bolum-->
+
+    <div>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+</div>
+

@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "UrunDetay";
+}
+<div class="well well-small">
+    <div class="row-fluid">
+        <div class="span5">
+            <div id="myCarousel" class="carousel slide cntr">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <a href="#"> <img src="~/Contents/assets/img/bilgisayar1.jpg" alt="" style="width:100%"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"> <img src="~/Contents/assets/img/bilgisayar2.jpg" alt="" style="width:100%"></a>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+        </div>
+        <div class="span7">
+            <hr class="soft" />
+            <h2>@Model[0].urunAdi</h2>
+            <form class="form-horizontal qtyFrm">
+                <div class="control-group">
+                    <label class="control-label"><span>Fiyati</span></label>
+                    <div class="controls">
+                        <input type="text" class="span6" value="@Model[0].urunFiyati TL" readonly>
+                    </div>
+                </div>
+
+                <h4>Stokta @Model[0].urunStokMiktari tane urun bulunuyor</h4>
+            </form>
+        </div>
+    </div>
+    <hr class="softn clr" />
+
+
+    <ul id="productDetail" class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">Urun Detaylari</a></li>
+        <li class=""><a href="#profile" data-toggle="tab">Urun Yorumlari</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content tabWrapper">
+        <div class="tab-pane fade active in" id="home">
+            <h4>Urun Bilgileri</h4>
+            <table class="table table-striped">
+                <tbody>
+                    <tr class="techSpecRow"><td class="techSpecTD1">UrunAdi:</td><td class="techSpecTD2">@Model[0].urunAdi</td></tr>
+                    <tr class="techSpecRow"><td class="techSpecTD1">Marka:</td><td class="techSpecTD2">@Model[0].markaAdi</td></tr>
+                    <tr class="techSpecRow"><td class="techSpecTD1">Fiyati:</td><td class="techSpecTD2">@Model[0].urunFiyati Tl</td></tr>
+
+                </tbody>
+            </table>
+            <h4>Urun Aciklamasi</h4>
+            <p>
+                @Model[0].urunAciklamasi
+            </p>
+
+            <!-- Burda kullanici login yapmissa Aciklama formu goster-->
+            @if (User.Identity.IsAuthenticated && User.IsInRole("satici") && ViewBag.UrunOzellik == null)
+            {
+                <form method="post" action="/UrunDetay/AciklamaEkle">
+                    <input type="hidden" name="urunOzellikId" value="@Model[0].urunId" />
+                    <p><label>Bu urune aciklama ekleyin:</label></p>
+                    <textarea name="aciklama" rows="4" cols="50"></textarea>
+                    <br>
+                    <input type="submit" class="shopBtn" value="Aciklama Ekle">
+                </form>
+            }
+
+
+        </div>
+        <div class="tab-pane fade" id="profile">
+            @foreach (ShopCart.Models.SP_GetUrunDetayWithUrunId_Result ud in Model)
+            {
+                if (ud.yorumMetni == null)
+                {
+                    <p>Henuz bir yorum yapilmamis</p>
+                }
+                else
+                {
+                    <div class="row-fluid">
+
+                        <div class="span6">
+                            <h4>@ud.kullaniciAdi</h4>
+                            <p>
+                                @ud.yorumMetni
+                            </p>
+                        </div>
+                        <div class="span4 alignR">
+                            <form class="form-horizontal qtyFrm">
+                                <h6> Yorum Tarihi: @ud.yorumTarihi</h6>
+                            </form>
+                        </div>
+                    </div>
+                    <hr class="soft">
+                }
+            }
+            <!-- Burda kullanici login yapmissa Yorum formu goster-->
+            @if (User.Identity.IsAuthenticated && User.IsInRole("kullanici"))
+            {
+                <form method="post">
+                    <input type="hidden" name="urunId" value="@Model[0].urunId" />
+                    <p><label>Yorum Yazin:</label></p>
+                    <textarea name="yorumMetni" rows="4" cols="50"></textarea>
+                    <br>
+                    <input type="submit" class="shopBtn" value="Yorum ekle">
+                </form>
+            }
+
+        </div>
+
+        <div class="tab-pane fade" id="cat1">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            <br>
+            <br>
+            <hr class="soften" />
+            <hr class="soften" />
+        </div>
+        <div class="tab-pane fade" id="cat2">
+
+            <hr class="soften" />
+            <hr class="soften" />
+            <hr class="soften" />
+            <hr class="soften" />
+
+        </div>
+    </div>
+
+</div>
+

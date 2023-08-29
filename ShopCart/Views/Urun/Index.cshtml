@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Urunlerim";
+}
+
+@if (Model.Count == 0)
+{
+
+
+    <p>Henuz Urun girisi yapmadiniz.Urun ekle kismindan urun girisi yapin</p>
+}
+else
+{
+    <div class="span9">
+        <div class="well well-small">
+            <div class="row-fluid">
+
+                <ul class="thumbnails">
+                    @foreach (ShopCart.Models.Urunler u in Model)
+                    {
+                        <li class="span4">
+                            <div class="thumbnail">
+                                <a href="@Url.Action("Index", "UrunDetay", u)"><img src="~/Contents/assets/img/@u.urunResmi" alt="Resim Bulunamadi"></a>
+                                <div class="caption cntr">
+                                    <p>@u.urunAdi</p>
+                                    <p><strong> @u.saticiId</strong></p>
+                                    <h4><a class="btn-danger urunSil " data-urnId="@u.urunId" href="#" title="urunuSil"> Urunu Sil </a></h4>
+                                    <h4><a class="shopBtn" href="/Urun/UrunGuncelle/@u.urunId" title="urunuGuncelle"> Urunu Guncelle </a></h4>
+                                    <br class="clr">
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(".urunSil").click(function () {
+            var sonuc = confirm(" Urunu silmek istiyor musun?");
+            if (sonuc) {
+
+                var uId = $(this).attr("data-urnId");
+
+                $.ajax(
+                    {
+
+                        type: "POST",
+                        url: "/Urun/UrunSil/" + uId,
+                        success: function () {
+                            alert(" Kayit basariyla silindi");
+                            window.location.replace("/Urun/Index");
+
+                        },
+
+                        error: function () {
+                            alert("Kayit Silinemedi");
+                        }
+
+                    });
+            }
+            else {
+                alert("Silme islemi iptal edildi");
+            }
+
+        });
+    </script>
+}

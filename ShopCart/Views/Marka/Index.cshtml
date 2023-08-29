@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Marka Ekle";
+
+}
+
+<div class="span9">
+    <h2>Marka Ekleme Sayfası</h2>
+
+    <div class="well">
+        <form class="form-horizontal" method="post">
+            <h3>Mevcut Markalar</h3>
+
+            <div class="control-group">
+                @foreach (ShopCart.Models.Markalar m in Model)
+                {
+                    <div class="navbar-inner">
+                        <ul>
+                            <h4> @m.markaAdi</h4>
+                            <a class="markaSil" data-mrkId="@m.markaId">Sil</a>
+                        </ul>
+                    </div>
+                }
+
+                <!--Kategori ekle Bolumu-->
+                <form class="form-horizontal" method="post">
+                    <h3>Yeni Marka Olusturun</h3>
+                    <div class="control-group">
+                        <label class="control-label">Marka Adi Girin<sup>*</sup></label>
+                        <div class="controls">
+                            <input type="text" name="markaAdi">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="submit" name="submitAccount"
+                                   value="Marka Ekle"
+                                   class="exclusive shopBtn">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </form>
+    </div>
+
+    <!--  Hatayi gosterecek bolum-->
+
+    <div>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+</div>
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(".markaSil").click(function () {
+            var sonuc = confirm(" Ilgili Markayi silmek istiyor musun?");
+            if (sonuc) {
+
+                var mId = $(this).attr("data-mrkId");
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Marka/MarkaSil/" + mId,
+                        success: function () {
+                            alert(" Kayit basariyla silindi");
+                            window.location.replace("/Marka/Index");
+
+                        },
+
+                        error: function () {
+                            alert("Kayit Silinemedi");
+                        }
+
+                    });
+            }
+            else {
+                alert("Silme islemi iptal edildi");
+            }
+
+        });
+    </script>
+}
+

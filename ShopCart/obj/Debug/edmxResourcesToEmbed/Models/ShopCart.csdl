@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopCartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adresler">
+    <Key>
+      <PropertyRef Name="adresId" />
+    </Key>
+    <Property Name="adresId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteriId" Type="Int32" />
+    <Property Name="il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="acikAdres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Adresler__muster__3F466844" FromRole="Adresler" ToRole="Kullanicilar" />
+    <NavigationProperty Name="KargoBilgileris" Relationship="Self.FK__KargoBilg__tesli__4BAC3F29" FromRole="Adresler" ToRole="KargoBilgileri" />
+  </EntityType>
+  <EntityType Name="Bolgeler">
+    <Key>
+      <PropertyRef Name="bolgeId" />
+    </Key>
+    <Property Name="bolgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bolgeTanimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Satis" Relationship="Self.FK__Satis__bolgeId__56E8E7AB" FromRole="Bolgeler" ToRole="Satis" />
+    <NavigationProperty Name="Satislars" Relationship="ShopCartModel.FK__Satislar__bolgeI__318258D2" FromRole="Bolgeler" ToRole="Satislar" />
+    <NavigationProperty Name="SatislarTablosus" Relationship="ShopCartModel.FK__SatislarT__bolge__382F5661" FromRole="Bolgeler" ToRole="SatislarTablosu" />
+  </EntityType>
+  <EntityType Name="Favoriler">
+    <Key>
+      <PropertyRef Name="favoriId" />
+    </Key>
+    <Property Name="favoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteriId" Type="Int32" />
+    <Property Name="eklenmeTarihi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Favoriler__muste__47DBAE45" FromRole="Favoriler" ToRole="Kullanicilar" />
+    <NavigationProperty Name="FavoriUruns" Relationship="Self.FK__FavoriUru__favor__5441852A" FromRole="Favoriler" ToRole="FavoriUrun" />
+  </EntityType>
+  <EntityType Name="FavoriUrun">
+    <Key>
+      <PropertyRef Name="favoriUrunId" />
+    </Key>
+    <Property Name="favoriUrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="favoriId" Type="Int32" />
+    <Property Name="urunId" Type="Int32" />
+    <NavigationProperty Name="Favoriler" Relationship="Self.FK__FavoriUru__favor__5441852A" FromRole="FavoriUrun" ToRole="Favoriler" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK__FavoriUru__urunI__5535A963" FromRole="FavoriUrun" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="KargoBilgileri">
+    <Key>
+      <PropertyRef Name="kargoId" />
+    </Key>
+    <Property Name="kargoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="teslimatAdresi" Type="Int32" />
+    <Property Name="kargoAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kargoTakipNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kargoDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Adresler" Relationship="Self.FK__KargoBilg__tesli__4BAC3F29" FromRole="KargoBilgileri" ToRole="Adresler" />
+  </EntityType>
+  <EntityType Name="KargoBilgisi">
+    <Key>
+      <PropertyRef Name="kargoBilgisiId" />
+    </Key>
+    <Property Name="kargoBilgisiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kargoId" Type="Int32" />
+    <Property Name="il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="acikAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kargoDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kargolar" Relationship="Self.FK__KargoBilg__kargo__51300E55" FromRole="KargoBilgisi" ToRole="Kargolar" />
+    <NavigationProperty Name="Satis" Relationship="Self.FK__Satis__kargoBilg__55009F39" FromRole="KargoBilgisi" ToRole="Satis" />
+    <NavigationProperty Name="Satislars" Relationship="ShopCartModel.FK__Satislar__kargoB__2F9A1060" FromRole="KargoBilgisi" ToRole="Satislar" />
+    <NavigationProperty Name="SatislarTablosus" Relationship="ShopCartModel.FK__SatislarT__kargo__36470DEF" FromRole="KargoBilgisi" ToRole="SatislarTablosu" />
+  </EntityType>
+  <EntityType Name="Kargolar">
+    <Key>
+      <PropertyRef Name="kargoId" />
+    </Key>
+    <Property Name="kargoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kargoAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="KargoBilgisis" Relationship="Self.FK__KargoBilg__kargo__51300E55" FromRole="Kargolar" ToRole="KargoBilgisi" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="kategoriId" />
+    </Key>
+    <Property Name="kategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Urunlers" Relationship="Self.FK__Urunler__kategor__4F7CD00D" FromRole="Kategoriler" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="olusturmaTarihi" Type="DateTime" Precision="0" />
+    <Property Name="kullaniciRolu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Adreslers" Relationship="Self.FK__Adresler__muster__3F466844" FromRole="Kullanicilar" ToRole="Adresler" />
+    <NavigationProperty Name="Favorilers" Relationship="Self.FK__Favoriler__muste__47DBAE45" FromRole="Kullanicilar" ToRole="Favoriler" />
+    <NavigationProperty Name="Sepetlers" Relationship="Self.FK__Sepetler__muster__3B75D760" FromRole="Kullanicilar" ToRole="Sepetler" />
+    <NavigationProperty Name="Urunlers" Relationship="Self.FK__Urunler__saticiI__4E88ABD4" FromRole="Kullanicilar" ToRole="Urunler" />
+    <NavigationProperty Name="Yorumlars" Relationship="Self.FK__Yorumlar__kullan__5812160E" FromRole="Kullanicilar" ToRole="Yorumlar" />
+  </EntityType>
+  <EntityType Name="Markalar">
+    <Key>
+      <PropertyRef Name="markaId" />
+    </Key>
+    <Property Name="markaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="markaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Urunlers" Relationship="Self.FK__Urunler__markaId__5070F446" FromRole="Markalar" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="OdemeYontemleri">
+    <Key>
+      <PropertyRef Name="odemeYontemiId" />
+    </Key>
+    <Property Name="odemeYontemiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="odemeYontemiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Satis" Relationship="Self.FK__Satis__odemeYont__55F4C372" FromRole="OdemeYontemleri" ToRole="Satis" />
+    <NavigationProperty Name="Satislars" Relationship="ShopCartModel.FK__Satislar__odemeY__308E3499" FromRole="OdemeYontemleri" ToRole="Satislar" />
+    <NavigationProperty Name="SatislarTablosus" Relationship="ShopCartModel.FK__SatislarT__odeme__373B3228" FromRole="OdemeYontemleri" ToRole="SatislarTablosu" />
+  </EntityType>
+  <EntityType Name="Sati">
+    <Key>
+      <PropertyRef Name="satisId" />
+    </Key>
+    <Property Name="satisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sepetId" Type="Int32" />
+    <Property Name="kargoBilgisiId" Type="Int32" />
+    <Property Name="odemeYontemiId" Type="Int32" />
+    <Property Name="bolgeId" Type="Int32" />
+    <Property Name="satisTutari" Type="Int32" Nullable="false" />
+    <Property Name="satisTarihi" Type="DateTime" Precision="0" />
+    <Property Name="satisDurumu" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bolgeler" Relationship="Self.FK__Satis__bolgeId__56E8E7AB" FromRole="Satis" ToRole="Bolgeler" />
+    <NavigationProperty Name="KargoBilgisi" Relationship="Self.FK__Satis__kargoBilg__55009F39" FromRole="Satis" ToRole="KargoBilgisi" />
+    <NavigationProperty Name="OdemeYontemleri" Relationship="Self.FK__Satis__odemeYont__55F4C372" FromRole="Satis" ToRole="OdemeYontemleri" />
+    <NavigationProperty Name="Sepetler" Relationship="Self.FK__Satis__sepetId__540C7B00" FromRole="Satis" ToRole="Sepetler" />
+  </EntityType>
+  <EntityType Name="Sepetler">
+    <Key>
+      <PropertyRef Name="sepetId" />
+    </Key>
+    <Property Name="sepetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteriId" Type="Int32" />
+    <Property Name="toplamTutar" Type="Int32" Nullable="false" />
+    <Property Name="eklenmeTarihi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Sepetler__muster__3B75D760" FromRole="Sepetler" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Satis" Relationship="Self.FK__Satis__sepetId__540C7B00" FromRole="Sepetler" ToRole="Satis" />
+    <NavigationProperty Name="SepetUruns" Relationship="Self.FK__SepetUrun__sepet__5CD6CB2B" FromRole="Sepetler" ToRole="SepetUrun" />
+    <NavigationProperty Name="Satislars" Relationship="ShopCartModel.FK__Satislar__sepetI__2EA5EC27" FromRole="Sepetler" ToRole="Satislar" />
+    <NavigationProperty Name="SatislarTablosus" Relationship="ShopCartModel.FK__SatislarT__sepet__3552E9B6" FromRole="Sepetler" ToRole="SatislarTablosu" />
+  </EntityType>
+  <EntityType Name="SepetUrun">
+    <Key>
+      <PropertyRef Name="sepetUrunId" />
+    </Key>
+    <Property Name="sepetUrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sepetId" Type="Int32" />
+    <Property Name="urunId" Type="Int32" />
+    <Property Name="urunSayisi" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sepetler" Relationship="Self.FK__SepetUrun__sepet__5CD6CB2B" FromRole="SepetUrun" ToRole="Sepetler" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK__SepetUrun__urunI__5DCAEF64" FromRole="SepetUrun" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="testId" />
+    </Key>
+    <Property Name="testId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="testAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Urunler">
+    <Key>
+      <PropertyRef Name="urunId" />
+    </Key>
+    <Property Name="urunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="saticiId" Type="Int32" />
+    <Property Name="kategoriId" Type="Int32" />
+    <Property Name="markaId" Type="Int32" />
+    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="urunFiyati" Type="Int32" Nullable="false" />
+    <Property Name="urunResmi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitTarihi" Type="DateTime" Precision="0" />
+    <Property Name="urunStokMiktari" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FavoriUruns" Relationship="Self.FK__FavoriUru__urunI__5535A963" FromRole="Urunler" ToRole="FavoriUrun" />
+    <NavigationProperty Name="Kategoriler" Relationship="Self.FK__Urunler__kategor__4F7CD00D" FromRole="Urunler" ToRole="Kategoriler" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Urunler__saticiI__4E88ABD4" FromRole="Urunler" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Markalar" Relationship="Self.FK__Urunler__markaId__5070F446" FromRole="Urunler" ToRole="Markalar" />
+    <NavigationProperty Name="SepetUruns" Relationship="Self.FK__SepetUrun__urunI__5DCAEF64" FromRole="Urunler" ToRole="SepetUrun" />
+    <NavigationProperty Name="UrunOzellikleri" Relationship="Self.FK__UrunOzell__urunO__6754599E" FromRole="Urunler" ToRole="UrunOzellikleri" />
+    <NavigationProperty Name="Yorumlars" Relationship="Self.FK__Yorumlar__urunId__59063A47" FromRole="Urunler" ToRole="Yorumlar" />
+  </EntityType>
+  <EntityType Name="UrunOzellikleri">
+    <Key>
+      <PropertyRef Name="urunOzellikId" />
+    </Key>
+    <Property Name="urunOzellikId" Type="Int32" Nullable="false" />
+    <Property Name="aciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK__UrunOzell__urunO__6754599E" FromRole="UrunOzellikleri" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Yorumlar">
+    <Key>
+      <PropertyRef Name="yorumId" />
+    </Key>
+    <Property Name="yorumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciId" Type="Int32" />
+    <Property Name="urunId" Type="Int32" />
+    <Property Name="yorumMetni" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="yorumTarihi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Yorumlar__kullan__5812160E" FromRole="Yorumlar" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK__Yorumlar__urunId__59063A47" FromRole="Yorumlar" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="URUNKATEGORIMARKA">
+    <Key>
+      <PropertyRef Name="UrunId" />
+      <PropertyRef Name="UrunAdi" />
+      <PropertyRef Name="urunFiyati" />
+      <PropertyRef Name="urunStokMiktari" />
+      <PropertyRef Name="kategoriAdi" />
+      <PropertyRef Name="markaAdi" />
+    </Key>
+    <Property Name="UrunId" Type="Int32" Nullable="false" />
+    <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="urunFiyati" Type="Int32" Nullable="false" />
+    <Property Name="urunResmi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urunStokMiktari" Type="Int32" Nullable="false" />
+    <Property Name="kategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="markaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Adresler__muster__3F466844">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Adresler" Type="Self.Adresler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Adresler">
+        <PropertyRef Name="musteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KargoBilg__tesli__4BAC3F29">
+    <End Role="Adresler" Type="Self.Adresler" Multiplicity="0..1" />
+    <End Role="KargoBilgileri" Type="Self.KargoBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresler">
+        <PropertyRef Name="adresId" />
+      </Principal>
+      <Dependent Role="KargoBilgileri">
+        <PropertyRef Name="teslimatAdresi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satis__bolgeId__56E8E7AB">
+    <End Role="Bolgeler" Type="Self.Bolgeler" Multiplicity="0..1" />
+    <End Role="Satis" Type="Self.Sati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolgeler">
+        <PropertyRef Name="bolgeId" />
+      </Principal>
+      <Dependent Role="Satis">
+        <PropertyRef Name="bolgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favoriler__muste__47DBAE45">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Favoriler" Type="Self.Favoriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Favoriler">
+        <PropertyRef Name="musteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FavoriUru__favor__5441852A">
+    <End Role="Favoriler" Type="Self.Favoriler" Multiplicity="0..1" />
+    <End Role="FavoriUrun" Type="Self.FavoriUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Favoriler">
+        <PropertyRef Name="favoriId" />
+      </Principal>
+      <Dependent Role="FavoriUrun">
+        <PropertyRef Name="favoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FavoriUru__urunI__5535A963">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="FavoriUrun" Type="Self.FavoriUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="FavoriUrun">
+        <PropertyRef Name="urunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KargoBilg__kargo__51300E55">
+    <End Role="Kargolar" Type="Self.Kargolar" Multiplicity="0..1" />
+    <End Role="KargoBilgisi" Type="Self.KargoBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kargolar">
+        <PropertyRef Name="kargoId" />
+      </Principal>
+      <Dependent Role="KargoBilgisi">
+        <PropertyRef Name="kargoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satis__kargoBilg__55009F39">
+    <End Role="KargoBilgisi" Type="Self.KargoBilgisi" Multiplicity="0..1" />
+    <End Role="Satis" Type="Self.Sati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KargoBilgisi">
+        <PropertyRef Name="kargoBilgisiId" />
+      </Principal>
+      <Dependent Role="Satis">
+        <PropertyRef Name="kargoBilgisiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Urunler__kategor__4F7CD00D">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="kategoriId" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="kategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sepetler__muster__3B75D760">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Sepetler" Type="Self.Sepetler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Sepetler">
+        <PropertyRef Name="musteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Urunler__saticiI__4E88ABD4">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="saticiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Yorumlar__kullan__5812160E">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Yorumlar">
+        <PropertyRef Name="kullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Urunler__markaId__5070F446">
+    <End Role="Markalar" Type="Self.Markalar" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Markalar">
+        <PropertyRef Name="markaId" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="markaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satis__odemeYont__55F4C372">
+    <End Role="OdemeYontemleri" Type="Self.OdemeYontemleri" Multiplicity="0..1" />
+    <End Role="Satis" Type="Self.Sati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OdemeYontemleri">
+        <PropertyRef Name="odemeYontemiId" />
+      </Principal>
+      <Dependent Role="Satis">
+        <PropertyRef Name="odemeYontemiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satis__sepetId__540C7B00">
+    <End Role="Sepetler" Type="Self.Sepetler" Multiplicity="0..1" />
+    <End Role="Satis" Type="Self.Sati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sepetler">
+        <PropertyRef Name="sepetId" />
+      </Principal>
+      <Dependent Role="Satis">
+        <PropertyRef Name="sepetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SepetUrun__sepet__5CD6CB2B">
+    <End Role="Sepetler" Type="Self.Sepetler" Multiplicity="0..1" />
+    <End Role="SepetUrun" Type="Self.SepetUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sepetler">
+        <PropertyRef Name="sepetId" />
+      </Principal>
+      <Dependent Role="SepetUrun">
+        <PropertyRef Name="sepetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SepetUrun__urunI__5DCAEF64">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="SepetUrun" Type="Self.SepetUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="SepetUrun">
+        <PropertyRef Name="urunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UrunOzell__urunO__6754599E">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+    <End Role="UrunOzellikleri" Type="Self.UrunOzellikleri" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="UrunOzellikleri">
+        <PropertyRef Name="urunOzellikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Yorumlar__urunId__59063A47">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="Yorumlar">
+        <PropertyRef Name="urunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopCartEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adreslers" EntityType="Self.Adresler" />
+    <EntitySet Name="Bolgelers" EntityType="Self.Bolgeler" />
+    <EntitySet Name="Favorilers" EntityType="Self.Favoriler" />
+    <EntitySet Name="FavoriUruns" EntityType="Self.FavoriUrun" />
+    <EntitySet Name="KargoBilgileris" EntityType="Self.KargoBilgileri" />
+    <EntitySet Name="KargoBilgisis" EntityType="Self.KargoBilgisi" />
+    <EntitySet Name="Kargolars" EntityType="Self.Kargolar" />
+    <EntitySet Name="Kategorilers" EntityType="Self.Kategoriler" />
+    <EntitySet Name="Kullanicilars" EntityType="Self.Kullanicilar" />
+    <EntitySet Name="Markalars" EntityType="Self.Markalar" />
+    <EntitySet Name="OdemeYontemleris" EntityType="Self.OdemeYontemleri" />
+    <EntitySet Name="Satis" EntityType="Self.Sati" />
+    <EntitySet Name="Sepetlers" EntityType="Self.Sepetler" />
+    <EntitySet Name="SepetUruns" EntityType="Self.SepetUrun" />
+    <EntitySet Name="Tests" EntityType="Self.Test" />
+    <EntitySet Name="Urunlers" EntityType="Self.Urunler" />
+    <EntitySet Name="UrunOzellikleris" EntityType="Self.UrunOzellikleri" />
+    <EntitySet Name="Yorumlars" EntityType="Self.Yorumlar" />
+    <EntitySet Name="URUNKATEGORIMARKAs" EntityType="Self.URUNKATEGORIMARKA" />
+    <AssociationSet Name="FK__Adresler__muster__3F466844" Association="Self.FK__Adresler__muster__3F466844">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Adresler" EntitySet="Adreslers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KargoBilg__tesli__4BAC3F29" Association="Self.FK__KargoBilg__tesli__4BAC3F29">
+      <End Role="Adresler" EntitySet="Adreslers" />
+      <End Role="KargoBilgileri" EntitySet="KargoBilgileris" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satis__bolgeId__56E8E7AB" Association="Self.FK__Satis__bolgeId__56E8E7AB">
+      <End Role="Bolgeler" EntitySet="Bolgelers" />
+      <End Role="Satis" EntitySet="Satis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favoriler__muste__47DBAE45" Association="Self.FK__Favoriler__muste__47DBAE45">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Favoriler" EntitySet="Favorilers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FavoriUru__favor__5441852A" Association="Self.FK__FavoriUru__favor__5441852A">
+      <End Role="Favoriler" EntitySet="Favorilers" />
+      <End Role="FavoriUrun" EntitySet="FavoriUruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FavoriUru__urunI__5535A963" Association="Self.FK__FavoriUru__urunI__5535A963">
+      <End Role="Urunler" EntitySet="Urunlers" />
+      <End Role="FavoriUrun" EntitySet="FavoriUruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KargoBilg__kargo__51300E55" Association="Self.FK__KargoBilg__kargo__51300E55">
+      <End Role="Kargolar" EntitySet="Kargolars" />
+      <End Role="KargoBilgisi" EntitySet="KargoBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satis__kargoBilg__55009F39" Association="Self.FK__Satis__kargoBilg__55009F39">
+      <End Role="KargoBilgisi" EntitySet="KargoBilgisis" />
+      <End Role="Satis" EntitySet="Satis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Urunler__kategor__4F7CD00D" Association="Self.FK__Urunler__kategor__4F7CD00D">
+      <End Role="Kategoriler" EntitySet="Kategorilers" />
+      <End Role="Urunler" EntitySet="Urunlers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sepetler__muster__3B75D760" Association="Self.FK__Sepetler__muster__3B75D760">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Sepetler" EntitySet="Sepetlers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Urunler__saticiI__4E88ABD4" Association="Self.FK__Urunler__saticiI__4E88ABD4">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Urunler" EntitySet="Urunlers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Yorumlar__kullan__5812160E" Association="Self.FK__Yorumlar__kullan__5812160E">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Yorumlar" EntitySet="Yorumlars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Urunler__markaId__5070F446" Association="Self.FK__Urunler__markaId__5070F446">
+      <End Role="Markalar" EntitySet="Markalars" />
+      <End Role="Urunler" EntitySet="Urunlers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satis__odemeYont__55F4C372" Association="Self.FK__Satis__odemeYont__55F4C372">
+      <End Role="OdemeYontemleri" EntitySet="OdemeYontemleris" />
+      <End Role="Satis" EntitySet="Satis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satis__sepetId__540C7B00" Association="Self.FK__Satis__sepetId__540C7B00">
+      <End Role="Sepetler" EntitySet="Sepetlers" />
+      <End Role="Satis" EntitySet="Satis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SepetUrun__sepet__5CD6CB2B" Association="Self.FK__SepetUrun__sepet__5CD6CB2B">
+      <End Role="Sepetler" EntitySet="Sepetlers" />
+      <End Role="SepetUrun" EntitySet="SepetUruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SepetUrun__urunI__5DCAEF64" Association="Self.FK__SepetUrun__urunI__5DCAEF64">
+      <End Role="Urunler" EntitySet="Urunlers" />
+      <End Role="SepetUrun" EntitySet="SepetUruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UrunOzell__urunO__6754599E" Association="Self.FK__UrunOzell__urunO__6754599E">
+      <End Role="Urunler" EntitySet="Urunlers" />
+      <End Role="UrunOzellikleri" EntitySet="UrunOzellikleris" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Yorumlar__urunId__59063A47" Association="Self.FK__Yorumlar__urunId__59063A47">
+      <End Role="Urunler" EntitySet="Urunlers" />
+      <End Role="Yorumlar" EntitySet="Yorumlars" />
+    </AssociationSet>
+    <FunctionImport Name="SP_GETFAVORIDETAYWITHID" ReturnType="Collection(ShopCartModel.SP_GETFAVORIDETAYWITHID_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetSepetDetay" ReturnType="Collection(ShopCartModel.SP_GetSepetDetay_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GETSEPETDETAYWITHID" ReturnType="Collection(ShopCartModel.SP_GETSEPETDETAYWITHID_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SEPETDETAY" ReturnType="Collection(ShopCartModel.SP_SEPETDETAY_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SEPETDETAY1" ReturnType="Collection(ShopCartModel.SP_SEPETDETAY1_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetUrunDetayWithId" ReturnType="Collection(ShopCartModel.GetUrunDetayWithId_Result)">
+      <Parameter Name="urunId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetUrunDetayWithUrunId" ReturnType="Collection(ShopCartModel.GetUrunDetayWithUrunId_Result)">
+      <Parameter Name="urunId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetUrunDetayWithUrunId" ReturnType="Collection(ShopCartModel.SP_GetUrunDetayWithUrunId_Result)">
+      <Parameter Name="urunId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Satislars" EntityType="ShopCartModel.Satislar" />
+    <AssociationSet Name="FK__Satislar__bolgeI__318258D2" Association="ShopCartModel.FK__Satislar__bolgeI__318258D2">
+      <End Role="Bolgeler" EntitySet="Bolgelers" />
+      <End Role="Satislar" EntitySet="Satislars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satislar__kargoB__2F9A1060" Association="ShopCartModel.FK__Satislar__kargoB__2F9A1060">
+      <End Role="KargoBilgisi" EntitySet="KargoBilgisis" />
+      <End Role="Satislar" EntitySet="Satislars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satislar__odemeY__308E3499" Association="ShopCartModel.FK__Satislar__odemeY__308E3499">
+      <End Role="OdemeYontemleri" EntitySet="OdemeYontemleris" />
+      <End Role="Satislar" EntitySet="Satislars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Satislar__sepetI__2EA5EC27" Association="ShopCartModel.FK__Satislar__sepetI__2EA5EC27">
+      <End Role="Sepetler" EntitySet="Sepetlers" />
+      <End Role="Satislar" EntitySet="Satislars" />
+    </AssociationSet>
+    <EntitySet Name="SatislarTablosus" EntityType="ShopCartModel.SatislarTablosu" />
+    <AssociationSet Name="FK__SatislarT__bolge__382F5661" Association="ShopCartModel.FK__SatislarT__bolge__382F5661">
+      <End Role="Bolgeler" EntitySet="Bolgelers" />
+      <End Role="SatislarTablosu" EntitySet="SatislarTablosus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SatislarT__kargo__36470DEF" Association="ShopCartModel.FK__SatislarT__kargo__36470DEF">
+      <End Role="KargoBilgisi" EntitySet="KargoBilgisis" />
+      <End Role="SatislarTablosu" EntitySet="SatislarTablosus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SatislarT__odeme__373B3228" Association="ShopCartModel.FK__SatislarT__odeme__373B3228">
+      <End Role="OdemeYontemleri" EntitySet="OdemeYontemleris" />
+      <End Role="SatislarTablosu" EntitySet="SatislarTablosus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SatislarT__sepet__3552E9B6" Association="ShopCartModel.FK__SatislarT__sepet__3552E9B6">
+      <End Role="Sepetler" EntitySet="Sepetlers" />
+      <End Role="SatislarTablosu" EntitySet="SatislarTablosus" />
+    </AssociationSet>
+    <FunctionImport Name="SP_YeniUrunDetayWithUrunId" ReturnType="Collection(ShopCartModel.SP_YeniUrunDetayWithUrunId_Result)">
+      <Parameter Name="urunId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetSalesInfo" ReturnType="Collection(ShopCartModel.SP_GetSalesInfo_Result)" />
+    <FunctionImport Name="GetUrunGuncelleDetayWithId" ReturnType="Collection(ShopCartModel.GetUrunGuncelleDetayWithId_Result)">
+      <Parameter Name="urunId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_GETFAVORIDETAYWITHID_Result">
+    <Property Type="Int32" Name="urunId" Nullable="true" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="favoriId" Nullable="false" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="markaId" Nullable="true" />
+    <Property Type="Int32" Name="saticiId" Nullable="true" />
+    <Property Type="DateTime" Name="eklenmeTarihi" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GetSepetDetay_Result">
+    <Property Type="Int32" Name="urunId" Nullable="true" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunSayisi" Nullable="false" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="toplamTutar" Nullable="false" />
+    <Property Type="Int32" Name="markaId" Nullable="true" />
+    <Property Type="Int32" Name="saticiId" Nullable="true" />
+    <Property Type="DateTime" Name="eklenmeTarihi" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GETSEPETDETAYWITHID_Result">
+    <Property Type="Int32" Name="urunId" Nullable="true" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunSayisi" Nullable="false" />
+    <Property Type="Int32" Name="sepetId" Nullable="false" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="toplamTutar" Nullable="false" />
+    <Property Type="Int32" Name="markaId" Nullable="true" />
+    <Property Type="Int32" Name="saticiId" Nullable="true" />
+    <Property Type="DateTime" Name="eklenmeTarihi" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_SEPETDETAY_Result">
+    <Property Type="Int32" Name="urunId" Nullable="true" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunSayisi" Nullable="false" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_SEPETDETAY1_Result">
+    <Property Type="Int32" Name="urunId" Nullable="true" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunSayisi" Nullable="false" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetUrunDetayWithId_Result">
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="markaAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yorumMetni" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="kullaniciAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="urunAciklamasi" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="GetUrunDetayWithUrunId_Result">
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunStokMiktari" Nullable="false" />
+    <Property Type="String" Name="markaAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yorumMetni" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="kullaniciAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="urunAciklamasi" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="SP_GetUrunDetayWithUrunId_Result">
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunId" Nullable="false" />
+    <Property Type="Int32" Name="urunStokMiktari" Nullable="false" />
+    <Property Type="String" Name="markaAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yorumMetni" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="yorumTarihi" Nullable="true" />
+    <Property Type="Int32" Name="yorumId" Nullable="true" />
+    <Property Type="String" Name="kullaniciAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="urunAciklamasi" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <EntityType Name="Satislar">
+    <Key>
+      <PropertyRef Name="satisId" />
+    </Key>
+    <Property Name="satisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sepetId" Type="Int32" />
+    <Property Name="kargoBilgisiId" Type="Int32" />
+    <Property Name="odemeYontemiId" Type="Int32" />
+    <Property Name="bolgeId" Type="Int32" />
+    <Property Name="satisTutari" Type="Int32" Nullable="false" />
+    <Property Name="satisTarihi" Type="DateTime" Precision="0" />
+    <Property Name="satisDurumu" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bolgeler" Relationship="ShopCartModel.FK__Satislar__bolgeI__318258D2" FromRole="Satislar" ToRole="Bolgeler" />
+    <NavigationProperty Name="KargoBilgisi" Relationship="ShopCartModel.FK__Satislar__kargoB__2F9A1060" FromRole="Satislar" ToRole="KargoBilgisi" />
+    <NavigationProperty Name="OdemeYontemleri" Relationship="ShopCartModel.FK__Satislar__odemeY__308E3499" FromRole="Satislar" ToRole="OdemeYontemleri" />
+    <NavigationProperty Name="Sepetler" Relationship="ShopCartModel.FK__Satislar__sepetI__2EA5EC27" FromRole="Satislar" ToRole="Sepetler" />
+  </EntityType>
+  <Association Name="FK__Satislar__bolgeI__318258D2">
+    <End Type="ShopCartModel.Bolgeler" Role="Bolgeler" Multiplicity="0..1" />
+    <End Type="ShopCartModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolgeler">
+        <PropertyRef Name="bolgeId" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="bolgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satislar__kargoB__2F9A1060">
+    <End Type="ShopCartModel.KargoBilgisi" Role="KargoBilgisi" Multiplicity="0..1" />
+    <End Type="ShopCartModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KargoBilgisi">
+        <PropertyRef Name="kargoBilgisiId" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="kargoBilgisiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satislar__odemeY__308E3499">
+    <End Type="ShopCartModel.OdemeYontemleri" Role="OdemeYontemleri" Multiplicity="0..1" />
+    <End Type="ShopCartModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OdemeYontemleri">
+        <PropertyRef Name="odemeYontemiId" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="odemeYontemiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Satislar__sepetI__2EA5EC27">
+    <End Type="ShopCartModel.Sepetler" Role="Sepetler" Multiplicity="0..1" />
+    <End Type="ShopCartModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sepetler">
+        <PropertyRef Name="sepetId" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="sepetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SatislarTablosu">
+    <Key>
+      <PropertyRef Name="satisId" />
+    </Key>
+    <Property Name="satisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sepetId" Type="Int32" />
+    <Property Name="kargoBilgisiId" Type="Int32" />
+    <Property Name="odemeYontemiId" Type="Int32" />
+    <Property Name="bolgeId" Type="Int32" />
+    <Property Name="satisTutari" Type="Int32" Nullable="false" />
+    <Property Name="satisTarihi" Type="DateTime" Precision="0" />
+    <Property Name="satisDurumu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bolgeler" Relationship="ShopCartModel.FK__SatislarT__bolge__382F5661" FromRole="SatislarTablosu" ToRole="Bolgeler" />
+    <NavigationProperty Name="KargoBilgisi" Relationship="ShopCartModel.FK__SatislarT__kargo__36470DEF" FromRole="SatislarTablosu" ToRole="KargoBilgisi" />
+    <NavigationProperty Name="OdemeYontemleri" Relationship="ShopCartModel.FK__SatislarT__odeme__373B3228" FromRole="SatislarTablosu" ToRole="OdemeYontemleri" />
+    <NavigationProperty Name="Sepetler" Relationship="ShopCartModel.FK__SatislarT__sepet__3552E9B6" FromRole="SatislarTablosu" ToRole="Sepetler" />
+  </EntityType>
+  <Association Name="FK__SatislarT__bolge__382F5661">
+    <End Type="ShopCartModel.Bolgeler" Role="Bolgeler" Multiplicity="0..1" />
+    <End Type="ShopCartModel.SatislarTablosu" Role="SatislarTablosu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolgeler">
+        <PropertyRef Name="bolgeId" />
+      </Principal>
+      <Dependent Role="SatislarTablosu">
+        <PropertyRef Name="bolgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SatislarT__kargo__36470DEF">
+    <End Type="ShopCartModel.KargoBilgisi" Role="KargoBilgisi" Multiplicity="0..1" />
+    <End Type="ShopCartModel.SatislarTablosu" Role="SatislarTablosu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KargoBilgisi">
+        <PropertyRef Name="kargoBilgisiId" />
+      </Principal>
+      <Dependent Role="SatislarTablosu">
+        <PropertyRef Name="kargoBilgisiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SatislarT__odeme__373B3228">
+    <End Type="ShopCartModel.OdemeYontemleri" Role="OdemeYontemleri" Multiplicity="0..1" />
+    <End Type="ShopCartModel.SatislarTablosu" Role="SatislarTablosu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OdemeYontemleri">
+        <PropertyRef Name="odemeYontemiId" />
+      </Principal>
+      <Dependent Role="SatislarTablosu">
+        <PropertyRef Name="odemeYontemiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SatislarT__sepet__3552E9B6">
+    <End Type="ShopCartModel.Sepetler" Role="Sepetler" Multiplicity="0..1" />
+    <End Type="ShopCartModel.SatislarTablosu" Role="SatislarTablosu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sepetler">
+        <PropertyRef Name="sepetId" />
+      </Principal>
+      <Dependent Role="SatislarTablosu">
+        <PropertyRef Name="sepetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_YeniUrunDetayWithUrunId_Result">
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunId" Nullable="false" />
+    <Property Type="Int32" Name="urunStokMiktari" Nullable="false" />
+    <Property Type="String" Name="markaAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yorumMetni" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="yorumTarihi" Nullable="true" />
+    <Property Type="Int32" Name="yorumId" Nullable="true" />
+    <Property Type="String" Name="kullaniciAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="urunAciklamasi" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="SP_GetSalesInfo_Result">
+    <Property Type="String" Name="KullaniciAdi" Nullable="false" MaxLength="101" />
+    <Property Type="Int32" Name="satisTutari" Nullable="false" />
+    <Property Type="DateTime" Name="satisTarihi" Nullable="true" />
+    <Property Type="Int32" Name="urunSayisi" Nullable="true" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="bolgeTanimi" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetUrunGuncelleDetayWithId_Result">
+    <Property Type="Int32" Name="urunId" Nullable="false" />
+    <Property Type="String" Name="markaAdi" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="kategoriAdi" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="urunAdi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="urunFiyati" Nullable="false" />
+    <Property Type="String" Name="urunResmi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="saticiId" Nullable="true" />
+    <Property Type="Int32" Name="urunStokMiktari" Nullable="false" />
+  </ComplexType>
+</Schema>

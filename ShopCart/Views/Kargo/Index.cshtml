@@ -1,0 +1,105 @@
+﻿
+
+@{
+    ViewBag.Title = "Kargo";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="container">
+        <div id="gototop"> </div>
+        <!--
+        Body Section
+        -->
+        <div class="row">
+            <div class="span12">
+                <div class="well well-small">
+                    <h1>Kargo Bilgileri Sayfasi <small class="pull-right"> </small></h1>
+                    <hr class="soften" />
+
+                    <div class="well">
+                        <form class="form-horizontal" method="post">
+                            <h3>Kargo Bilgileri</h3>
+                            <div class="control-group">
+                                <label class="control-label">Kargo Firmasi Secin <sup>*</sup></label>
+                                <div class="controls">
+                                    <select class="form-select-list" name="kargoId">
+                                        @foreach (ShopCart.Models.Kargolar k in @ViewBag.Kargolar)
+                                        {
+                                            <option value="@k.kargoId">@k.kargoAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Il Girin<sup>*</sup></label>
+                                <div class="controls">
+                                    <input type="text" name="il">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Ilce Girin<sup>*</sup></label>
+                                <div class="controls">
+                                    <input type="text" name="ilce">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Acik Adres Girin<sup>*</sup></label>
+                                <div class="controls">
+                                    <input type="text" name="acikAdres">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <input type="hidden" name="kargoDurumu" value="false">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="controls">
+                                    <input type="submit" name="submitAccount"
+                                           value=" Satis Sayfasina Ilerle"
+                                           class="shopBtn btn-large pull-right">
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <!--  Hatayi gosterecek bolum-->
+
+                        <div>
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                        {
+                                            <li>@error.ErrorMessage</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="~/Contents/assets/js/jquery.js"></script>
+        <script src="~/Contents/assets/js/bootstrap.min.js"></script>
+        <script src="~/Contents/assets/js/jquery.easing-1.3.min.js"></script>
+        <script src="~/Contents/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        <script src="~/Contents/assets/js/shop.js"></script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Sepet";
+}
+
+
+@if (Model.Count == 0)
+{
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <body>
+        <div class="container">
+            <div id="gototop"> </div>
+            <!--
+            Body Section
+            -->
+            <div class="row">
+                <div class="span12">
+                    <div class="well well-small">
+                        <h1>Sepetim <small class="pull-right"> Sepette @Model.Count tane urun  var </small></h1>
+                        <hr class="soften" />
+                        <p>Henuz sepette urun bulunmamaktadir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="~/Contents/assets/js/jquery.js"></script>
+            <script src="~/Contents/assets/js/bootstrap.min.js"></script>
+            <script src="~/Contents/assets/js/jquery.easing-1.3.min.js"></script>
+            <script src="~/Contents/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+            <script src="~/Contents/assets/js/shop.js"></script>
+    </body>
+</html>
+}
+else
+{
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="container">
+        <div id="gototop"> </div>
+        <!--
+        Body Section
+        -->
+        <div class="row">
+            <div class="span12">
+                <div class="well well-small">
+                    <h1>Sepet Sayfasi <small class="pull-right"> Sepette @Model.Count tane urun  var </small></h1>
+                    <hr class="soften" />
+
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Urun</th>
+                                <th>UrunAdi</th>
+                                <th>Urun Sayisi </th>
+                                <th>Stokta Var</th>
+                                <th>UrunFiyati</th>
+                                <th>Sepetten Cikart</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ShopCart.Models.SP_GETSEPETDETAYWITHID_Result s in Model)
+                            {
+                                <tr>
+                                    <td><img width="100" src="~/Contents/assets/img/e.jpg" alt=""></td>
+                                    <td>@s.urunAdi</td>
+                                    <td> @s.urunSayisi </td>
+                                    <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
+                                    <td>@s.urunFiyati TL</td>
+                                    <td><a class="shopBtn sptCikart" data-urnId="@s.urunId"  href="#" title="sepetten cikart"> Sepetten Cikart </a></td>
+
+
+                                </tr>
+
+                            }
+                            <tr>
+                                <td colspan="6" class="alignR">Toplam Tutar:	</td>
+                                <td> @ViewBag.ToplamTutar TL</td>
+                            </tr>
+
+                        </tbody>
+                    </table><br />
+
+                    <a href="/Guvenlik/Anasayfa" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Alisverise Devam Et </a>
+                    <a href="/Kargo/Index" class="shopBtn btn-large pull-right">Devam Et <span class="icon-arrow-right"></span></a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="~/Contents/assets/js/jquery.js"></script>
+        <script src="~/Contents/assets/js/bootstrap.min.js"></script>
+        <script src="~/Contents/assets/js/jquery.easing-1.3.min.js"></script>
+        <script src="~/Contents/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        <script src="~/Contents/assets/js/shop.js"></script>
+</body>
+</html>
+
+}
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(".sptCikart").click(function () {
+            var sonuc = confirm(" Urunu cikarmak istiyor musun?");
+            if (sonuc) {
+                var uId = $(this).attr("data-urnId");
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Sepet/SepettenCikart/" + uId,
+                        success: function () {
+                            alert(" Urun basariyla sepetten cikarildi");
+                            window.location.replace("/Sepet/Index");
+
+                        },
+
+                        error: function () {
+                            alert("Urun Cikarilamadi");
+                        }
+
+                    });
+            }
+            else {
+                alert("Cikarma islemi iptal edildi");
+            }
+
+        });
+    </script>
+}
+
+
+
+1

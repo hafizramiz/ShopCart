@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Thank You";
+}
+
+@if (ViewBag.Register != "Register")
+{
+    <div class="container">
+        <h1>Tebrikler!</h1>
+        <p>Tebrikler! Başarıyla satin aldiniz.</p>
+        <a href="/Guvenlik/Anasayfa" class="btn btn-primary">Anasayfa'ya Git</a>
+    </div>
+}
+else
+{
+    <div class="container">
+        <h1>Tebrikler!</h1>
+        <p>Tebrikler! Başarıyla kayıt oldunuz.</p>
+        <a href="/Guvenlik/Anasayfa" class="btn btn-primary">Anasayfa'ya Git</a>
+    </div>
+}
+

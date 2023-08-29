@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShopCartModel1StoreContainer" CdmEntityContainer="ShopCartEntities1">
+    <EntitySetMapping Name="Adreslers">
+      <EntityTypeMapping TypeName="ShopCartModel1.Adresler">
+        <MappingFragment StoreEntitySet="Adresler">
+          <ScalarProperty Name="adresId" ColumnName="adresId" />
+          <ScalarProperty Name="musteriId" ColumnName="musteriId" />
+          <ScalarProperty Name="il" ColumnName="il" />
+          <ScalarProperty Name="ilce" ColumnName="ilce" />
+          <ScalarProperty Name="acikAdres" ColumnName="acikAdres" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bolgelers">
+      <EntityTypeMapping TypeName="ShopCartModel1.Bolgeler">
+        <MappingFragment StoreEntitySet="Bolgeler">
+          <ScalarProperty Name="bolgeId" ColumnName="bolgeId" />
+          <ScalarProperty Name="bolgeTanimi" ColumnName="bolgeTanimi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favorilers">
+      <EntityTypeMapping TypeName="ShopCartModel1.Favoriler">
+        <MappingFragment StoreEntitySet="Favoriler">
+          <ScalarProperty Name="favoriId" ColumnName="favoriId" />
+          <ScalarProperty Name="musteriId" ColumnName="musteriId" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavoriUruns">
+      <EntityTypeMapping TypeName="ShopCartModel1.FavoriUrun">
+        <MappingFragment StoreEntitySet="FavoriUrun">
+          <ScalarProperty Name="favoriUrunId" ColumnName="favoriUrunId" />
+          <ScalarProperty Name="favoriId" ColumnName="favoriId" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KargoBilgileris">
+      <EntityTypeMapping TypeName="ShopCartModel1.KargoBilgileri">
+        <MappingFragment StoreEntitySet="KargoBilgileri">
+          <ScalarProperty Name="kargoId" ColumnName="kargoId" />
+          <ScalarProperty Name="teslimatAdresi" ColumnName="teslimatAdresi" />
+          <ScalarProperty Name="kargoAdi" ColumnName="kargoAdi" />
+          <ScalarProperty Name="kargoTakipNo" ColumnName="kargoTakipNo" />
+          <ScalarProperty Name="kargoDurumu" ColumnName="kargoDurumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KargoBilgisis">
+      <EntityTypeMapping TypeName="ShopCartModel1.KargoBilgisi">
+        <MappingFragment StoreEntitySet="KargoBilgisi">
+          <ScalarProperty Name="kargoBilgisiId" ColumnName="kargoBilgisiId" />
+          <ScalarProperty Name="kargoId" ColumnName="kargoId" />
+          <ScalarProperty Name="il" ColumnName="il" />
+          <ScalarProperty Name="ilce" ColumnName="ilce" />
+          <ScalarProperty Name="acikAdres" ColumnName="acikAdres" />
+          <ScalarProperty Name="kargoDurumu" ColumnName="kargoDurumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kargolars">
+      <EntityTypeMapping TypeName="ShopCartModel1.Kargolar">
+        <MappingFragment StoreEntitySet="Kargolar">
+          <ScalarProperty Name="kargoId" ColumnName="kargoId" />
+          <ScalarProperty Name="kargoAdi" ColumnName="kargoAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategorilers">
+      <EntityTypeMapping TypeName="ShopCartModel1.Kategoriler">
+        <MappingFragment StoreEntitySet="Kategoriler">
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicilars">
+      <EntityTypeMapping TypeName="ShopCartModel1.Kullanicilar">
+        <MappingFragment StoreEntitySet="Kullanicilar">
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+          <ScalarProperty Name="kullaniciSoyadi" ColumnName="kullaniciSoyadi" />
+          <ScalarProperty Name="kullaniciMail" ColumnName="kullaniciMail" />
+          <ScalarProperty Name="kullaniciSifre" ColumnName="kullaniciSifre" />
+          <ScalarProperty Name="olusturmaTarihi" ColumnName="olusturmaTarihi" />
+          <ScalarProperty Name="kullaniciRolu" ColumnName="kullaniciRolu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Markalars">
+      <EntityTypeMapping TypeName="ShopCartModel1.Markalar">
+        <MappingFragment StoreEntitySet="Markalar">
+          <ScalarProperty Name="markaId" ColumnName="markaId" />
+          <ScalarProperty Name="markaAdi" ColumnName="markaAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OdemeYontemleris">
+      <EntityTypeMapping TypeName="ShopCartModel1.OdemeYontemleri">
+        <MappingFragment StoreEntitySet="OdemeYontemleri">
+          <ScalarProperty Name="odemeYontemiId" ColumnName="odemeYontemiId" />
+          <ScalarProperty Name="odemeYontemiAdi" ColumnName="odemeYontemiAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Satis">
+      <EntityTypeMapping TypeName="ShopCartModel1.Sati">
+        <MappingFragment StoreEntitySet="Satis">
+          <ScalarProperty Name="satisId" ColumnName="satisId" />
+          <ScalarProperty Name="sepetId" ColumnName="sepetId" />
+          <ScalarProperty Name="kargoBilgisiId" ColumnName="kargoBilgisiId" />
+          <ScalarProperty Name="odemeYontemiId" ColumnName="odemeYontemiId" />
+          <ScalarProperty Name="bolgeId" ColumnName="bolgeId" />
+          <ScalarProperty Name="satisTutari" ColumnName="satisTutari" />
+          <ScalarProperty Name="satisTarihi" ColumnName="satisTarihi" />
+          <ScalarProperty Name="satisDurumu" ColumnName="satisDurumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sepetlers">
+      <EntityTypeMapping TypeName="ShopCartModel1.Sepetler">
+        <MappingFragment StoreEntitySet="Sepetler">
+          <ScalarProperty Name="sepetId" ColumnName="sepetId" />
+          <ScalarProperty Name="musteriId" ColumnName="musteriId" />
+          <ScalarProperty Name="toplamTutar" ColumnName="toplamTutar" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SepetUruns">
+      <EntityTypeMapping TypeName="ShopCartModel1.SepetUrun">
+        <MappingFragment StoreEntitySet="SepetUrun">
+          <ScalarProperty Name="sepetUrunId" ColumnName="sepetUrunId" />
+          <ScalarProperty Name="sepetId" ColumnName="sepetId" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="urunSayisi" ColumnName="urunSayisi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="ShopCartModel1.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="testId" ColumnName="testId" />
+          <ScalarProperty Name="testAdi" ColumnName="testAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urunlers">
+      <EntityTypeMapping TypeName="ShopCartModel1.Urunler">
+        <MappingFragment StoreEntitySet="Urunler">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="saticiId" ColumnName="saticiId" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="markaId" ColumnName="markaId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="kayitTarihi" ColumnName="kayitTarihi" />
+          <ScalarProperty Name="urunStokMiktari" ColumnName="urunStokMiktari" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrunOzellikleris">
+      <EntityTypeMapping TypeName="ShopCartModel1.UrunOzellikleri">
+        <MappingFragment StoreEntitySet="UrunOzellikleri">
+          <ScalarProperty Name="urunOzellikId" ColumnName="urunOzellikId" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yorumlars">
+      <EntityTypeMapping TypeName="ShopCartModel1.Yorumlar">
+        <MappingFragment StoreEntitySet="Yorumlar">
+          <ScalarProperty Name="yorumId" ColumnName="yorumId" />
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="yorumMetni" ColumnName="yorumMetni" />
+          <ScalarProperty Name="yorumTarihi" ColumnName="yorumTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="URUNKATEGORIMARKAs">
+      <EntityTypeMapping TypeName="ShopCartModel1.URUNKATEGORIMARKA">
+        <MappingFragment StoreEntitySet="URUNKATEGORIMARKA">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="urunStokMiktari" ColumnName="urunStokMiktari" />
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+          <ScalarProperty Name="markaAdi" ColumnName="markaAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetSepetDetay" FunctionName="ShopCartModel1.Store.SP_GetSepetDetay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShopCartModel1.SP_GetSepetDetay_Result">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunSayisi" ColumnName="urunSayisi" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="toplamTutar" ColumnName="toplamTutar" />
+          <ScalarProperty Name="markaId" ColumnName="markaId" />
+          <ScalarProperty Name="saticiId" ColumnName="saticiId" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GETSEPETDETAYWITHID" FunctionName="ShopCartModel1.Store.SP_GETSEPETDETAYWITHID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShopCartModel1.SP_GETSEPETDETAYWITHID_Result">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunSayisi" ColumnName="urunSayisi" />
+          <ScalarProperty Name="sepetId" ColumnName="sepetId" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="toplamTutar" ColumnName="toplamTutar" />
+          <ScalarProperty Name="markaId" ColumnName="markaId" />
+          <ScalarProperty Name="saticiId" ColumnName="saticiId" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SEPETDETAY" FunctionName="ShopCartModel1.Store.SP_SEPETDETAY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShopCartModel1.SP_SEPETDETAY_Result">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunSayisi" ColumnName="urunSayisi" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SEPETDETAY1" FunctionName="ShopCartModel1.Store.SP_SEPETDETAY1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShopCartModel1.SP_SEPETDETAY1_Result">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunSayisi" ColumnName="urunSayisi" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GETFAVORIDETAYWITHID" FunctionName="ShopCartModel1.Store.SP_GETFAVORIDETAYWITHID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShopCartModel1.SP_GETFAVORIDETAYWITHID_Result">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="favoriId" ColumnName="favoriId" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="markaId" ColumnName="markaId" />
+          <ScalarProperty Name="saticiId" ColumnName="saticiId" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

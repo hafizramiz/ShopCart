@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1793fd6f3c3e4bfaa8a1d227cc46bfa8" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopCartModel.Adresler" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Bolgeler" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Favoriler" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.FavoriUrun" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.KargoBilgileri" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.KargoBilgisi" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Kargolar" Width="1.5" PointX="0.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Kategoriler" Width="1.5" PointX="5.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Markalar" Width="1.5" PointX="5.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.OdemeYontemleri" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Sati" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Sepetler" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.SepetUrun" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Test" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Urunler" Width="1.5" PointX="8" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.UrunOzellikleri" Width="1.5" PointX="10.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.Yorumlar" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopCartModel.URUNKATEGORIMARKA" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopCartModel.FK__Adresler__muster__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__KargoBilg__tesli__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Satis__bolgeId__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Favoriler__muste__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__FavoriUru__favor__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__FavoriUru__urunI__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__KargoBilg__kargo__51300E55" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Satis__kargoBilg__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Urunler__kategor__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Sepetler__muster__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Urunler__saticiI__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Yorumlar__kullan__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Urunler__markaId__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Satis__odemeYont__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Satis__sepetId__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__SepetUrun__sepet__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__SepetUrun__urunI__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__UrunOzell__urunO__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopCartModel.FK__Yorumlar__urunId__59063A47" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShopCartModel.Satislar" Width="1.5" PointX="8.25" PointY="16" />
+        <AssociationConnector Association="ShopCartModel.FK__Satislar__bolgeI__318258D2" />
+        <AssociationConnector Association="ShopCartModel.FK__Satislar__kargoB__2F9A1060" />
+        <AssociationConnector Association="ShopCartModel.FK__Satislar__odemeY__308E3499" />
+        <AssociationConnector Association="ShopCartModel.FK__Satislar__sepetI__2EA5EC27" />
+        <EntityTypeShape EntityType="ShopCartModel.SatislarTablosu" Width="1.5" PointX="5.25" PointY="20.125" />
+        <AssociationConnector Association="ShopCartModel.FK__SatislarT__bolge__382F5661" />
+        <AssociationConnector Association="ShopCartModel.FK__SatislarT__kargo__36470DEF" />
+        <AssociationConnector Association="ShopCartModel.FK__SatislarT__odeme__373B3228" />
+        <AssociationConnector Association="ShopCartModel.FK__SatislarT__sepet__3552E9B6" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
