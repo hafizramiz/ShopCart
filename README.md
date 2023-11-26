@@ -67,7 +67,7 @@ ASP.NET Framework
 Entity Framework
 MSSQL 
 
-# Images <img src="https://user-images.githubusercontent.com/102408138/181803745-a7421993-ec40-4ac6-bc71-9f7cf25dbb4d.gif" width="50" height="50" />
+# Videos <img src="https://user-images.githubusercontent.com/102408138/181803745-a7421993-ec40-4ac6-bc71-9f7cf25dbb4d.gif" width="50" height="50" />
 
 https://github.com/hafizramiz/ShopCart/assets/102408138/b4f4eca1-d22b-4794-9b2c-eddc9a8e2594
 
