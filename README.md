@@ -8,7 +8,7 @@ The project is designed to manage an e-commerce system with features for user ma
 
 # ✨ Features
 
-User Management
+## User Management
 Users (Kullanicilar) Table:
 User registration with name, email, password, and role.
 Automatic assignment of user ID and creation date.
