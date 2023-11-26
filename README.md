@@ -26,34 +26,34 @@ Description of product features.
 
 Listing of products with details like name, price, stock quantity, etc.
 Association with categories, brands, and features.
-Shopping Cart
-Carts (Sepetler) Table:
+## Shopping Cart
+### Carts (Sepetler) Table:
 
 Creation of shopping carts for users.
 Tracking total amount and creation date.
-Cart Items (SepetUrun) Table:
+### Cart Items (SepetUrun) Table:
 
 Association of products with shopping carts.
 Quantity of each product in the cart.
-Order and Payment
-Orders (Satislar) Table:
+## Order and Payment
+### Orders (Satislar) Table:
 
 Placement of orders with associated shopping carts, delivery information, payment method, and region.
 Tracking of order amount, date, and status.
-Payment Methods (OdemeYontemleri) Table:
+### Payment Methods (OdemeYontemleri) Table:
 
 Storage of available payment methods.
-Additional Features
-Addresses (Adresler) Table:
+## Additional Features
+### Addresses (Adresler) Table:
 
 Recording user addresses with details like city, district, and open address.
-Favorites (Favoriler) Table:
+### Favorites (Favoriler) Table:
 
 User-specific lists of favorite items.
-Comments (Yorumlar) Table:
+### Comments (Yorumlar) Table:
 
 User comments on products.
-Delivery Information (KargoBilgileri) Table:
+### Delivery Information (KargoBilgileri) Table:
 
 Recording delivery information with a tracking number and status
 # Used Technologies
