@@ -13,15 +13,16 @@ The project is designed to manage an e-commerce system with features for user ma
 User registration with name, email, password, and role.
 Automatic assignment of user ID and creation date.
 ## Product Management
+
 ### Categories (Kategoriler) Table:
 Categorization of products.
-Brands (Markalar) Table:
+### Brands (Markalar) Table:
 
 Storage of product brands.
-Product Features (UrunOzellikleri) Table:
+### Product Features (UrunOzellikleri) Table:
 
 Description of product features.
-Products (Urunler) Table:
+### Products (Urunler) Table:
 
 Listing of products with details like name, price, stock quantity, etc.
 Association with categories, brands, and features.
