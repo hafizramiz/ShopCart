@@ -67,16 +67,19 @@ ASP.NET Framework
 Entity Framework
 MSSQL 
 
+
 # Videos <img src="https://user-images.githubusercontent.com/102408138/181803745-a7421993-ec40-4ac6-bc71-9f7cf25dbb4d.gif" width="50" height="50" />
 
 https://github.com/hafizramiz/ShopCart/assets/102408138/b4f4eca1-d22b-4794-9b2c-eddc9a8e2594
 
-🤓 Author
-I'm Hafiz Ramiz, a passionate Mobile Developer with a love for Flutter. Connect with me on LinkedIn and GitHub.
+## 🤓 Author
 
-🌟 Show Your Support
+I'm Hafiz Ramiz, a passionate Mobile Developer with a love for Flutter and Jetpack Compose. 
+Connect with me on [LinkedIn](https://www.linkedin.com/in/hafizramiz/) and [GitHub](https://github.com/hafizramiz).
+
+## 🌟 Show Your Support
+
 If you find this project interesting or helpful, consider giving it a star ⭐️. It means a lot!
 
 Happy coding! 🚀
-
 
