@@ -71,9 +71,12 @@ MSSQL
 
 https://github.com/hafizramiz/ShopCart/assets/102408138/b4f4eca1-d22b-4794-9b2c-eddc9a8e2594
 
+🤓 Author
+I'm Hafiz Ramiz, a passionate Mobile Developer with a love for Flutter. Connect with me on LinkedIn and GitHub.
 
+🌟 Show Your Support
+If you find this project interesting or helpful, consider giving it a star ⭐️. It means a lot!
 
-# 🤓 Author
+Happy coding! 🚀
 
-Hafiz Ramiz
 
